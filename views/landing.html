@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+	<div class="eight columns well">
+		<h2><i>Welcome to the future of calculus.</i></h2>
+		<p><strong>The Innovation University® is doing what it does best: reinventing the wheel. </strong>We are proud to present <i>Gudarius</i>: the world's first online mathematics teaching tool. The future of tomorrow is here today, for tomorrow: imagine. We at Stevens Institute of Technology fully endorse the replacement of all mathematics professors with Gudarius. git gud son.<br>Why spend time learning math when you can spend time learning Gudarius?</p>
+	</div>
+	</div>
+	<div class="row">
+	<br>
+	<p>Are you ready?</p>
+	<a href="#ex1" rel="modal:open"><button style="margin-right: 10px">Yes</button></a><a href="/module/0"><button>Hell Yes!</button></a>
+	<style>
+		.well {
+			background-color: #EEEEEE;
+			padding: 10px;
+			border: 2px solid #AAAAAA;
+		}
+	</style>
+	<div id="ex1" class="modal">
+	  	<h2 style="color:red">Incorrect</h2>
+		<p><strong>Please check your work: "Yes"</strong></p>
+	  <a href="#" rel="modal:close"><button>Close</button></a>
+	</div>
+</div>
+{% endblock %}

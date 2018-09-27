@@ -1,0 +1,25 @@
+{
+  "name": "gudarius",
+  "version": "1.0.0",
+  "description": "A better version of Gradarius.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wessles/Gudarius.git"
+  },
+  "author": "Wesley LaFerriere, Jared Pincus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wessles/Gudarius/issues"
+  },
+  "homepage": "https://github.com/wessles/Gudarius#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "guppy-js": "^2.0.0-beta.3",
+    "nunjucks": "^3.1.3",
+    "path": "^0.12.7"
+  }
+}

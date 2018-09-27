@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Gudarius</title>
+
+		<link rel="icon shortcut" href="/image/icon.png" type="image/png" />
+		
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<style>*{font-family: 'Open Sans', sans-serif;}</style>
+		
+		<link rel="stylesheet" href="/css/normalize.css">
+		<link rel="stylesheet" href="/css/skeleton.css">
+		
+		<link rel="stylesheet" href="/guppy-js/guppy-default.min.css">
+		<script type="text/javascript" src="/guppy-js/guppy.min.js"></script>
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+		
+		{% block extrahead %}{% endblock %}
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="eight columns">
+					<div style="display:inline-block">
+						<a href="/"><img src="/image/logo.png" width="100%" style="display: inline-block"></a>
+					</div>
+				</div>
+			</div>
+			<hr>
+			{% block content %}{% endblock %}
+			<br>
+			<hr>
+			<div class="row">
+				<div class="eight columns">
+					<p style="font-size: 15px; margin:0">The official calculus resource of Stevens Inst. of Technology</p>
+					<p style="font-size: 15px; margin:0; color: #aaa">Made for SCSC Code Jam 2018, by Wes L and Jared P</p>
+				</div>
+			</div>
+			<br>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block extrahead %}
+<script>
+	$(function() {
+		$('#answer').hide();
+		
+		const setMsg = function(msg) {
+			$('#msg').html('<img src="/image/'+msg+'.png" height="45px">')
+		};
+
+		var changes = 0;
+		var colors = ["bluecheck","greencheck","greycheck","redstop"];
+		function update() {
+			changes += 1;
+			if(changes == 1) {
+				changes = 0
+				let rand = Math.floor(Math.random()*8)	
+				setMsg(colors[Math.min(3,rand)]);
+			}
+		}
+
+		Guppy.init({
+			"path":"/guppy-js",
+			"symbols":"/guppy-js/sym/symbols.json",
+			"callback":function(){ Guppy.Doc.render_all('text','$$'); }
+		});
+		var g1 = new Guppy("guppy1",{
+			"options":{'empty_content': "" },
+			"events":{"change":update},
+		});
+
+		$('#submit').click(function() {
+
+			$('#output').html("Incorrect.");
+			try{
+				let content = Guppy("guppy1").engine.get_content("text");
+				console.log(content);
+			} catch {
+				$('#output').html("Invalid input.")
+			}
+		});
+
+		$('#close').click(function() {
+			$('#showanswer').show();
+		});
+
+		$('#showanswer').click(function() {
+			$('#answer').show();
+			$('#submit').hide();
+			$('#next').show();
+		});
+
+
+	});
+</script>
+<style>
+	.problem-body, .answer-body {
+		border: 2px #ddd dashed;
+		padding: 20px;
+	}
+</style>
+
+{% endblock %}
+
+{% block content %}
+{% if module > 5 %}
+<h1>Don't be a smartass.</h1>
+<p>There's only 5 modules.</p>
+<img src="/image/listenhere.jpg" width="50%">
+{% elif (module < 0) or (module % 1 != 0) %}
+<h1>o no</h1>
+<p>off owie</p><img src="/image/surreal.jpg" width="50%">
+{% else %}
+<div class="row">
+	<div class="eight columns">
+		<div class="problem-body">
+			<h3><strong><code style="font: inherit">Module {{module}}</code></strong></h3>
+			<h5><i>{{data.p}}</i></h5>
+			<h5>{{ data.q }}</h5>
+		</div>
+
+		<br>
+		
+		<div>
+			<div id="msg" style="width: 50px; margin-right: 10px; float: left"><img  style="height: 45px" src="/image/empty.png" /></div>
+			<div id="guppy1" style="width:400px; display: inline-block"></div>
+		</div>
+		<br>
+		<a href="#wrong" rel="modal:open"><button id="submit" style="margin-right:10px">Submit</button></a><a href='/module/{{ (module|int + 1) }}'><button id="next" hidden>Next Module</button></a>
+		
+		<br>
+
+		<div id="answer" class="modal">
+			<h3>Correct Solution:</h3>
+			<p>{{ data.a }}</p>
+		  	<a href="#" rel="modal:close"><button id="close2">Close</button></a><br>
+		</div>
+		<div id="wrong" class="modal">
+		  	<h2 id="output" style="color:red"></h2>
+			<p><strong>Please check your work.</strong></p>
+		  	<a href="#" rel="modal:close"><button id="close">Close</button></a>
+		  	<a href="#answer" rel="modal:open"><button style="margin-left: 10px" id="showanswer">Solution</button></a>
+		</div>
+	</div>
+</div>
+{% endif %}
+{% endblock %}
