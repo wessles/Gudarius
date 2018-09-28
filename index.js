@@ -54,8 +54,8 @@ app.get('/module/5',function(req,res) {
 });
 
 app.get('/module/:module',function(req, res) {
-    let module = req.params.module;
-        res.render('index.html',{module: req.params.module, data: modules[module]});
+    var mod = req.params.module;
+        res.render('index.html',{module: req.params.module, data: modules[mod]});
 });
 
 
